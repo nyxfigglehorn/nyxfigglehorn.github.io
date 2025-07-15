@@ -6,7 +6,7 @@
     <title>Nyx Figglehorn</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300ff00%22>N</text></svg>" type="image/x-icon">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300ff00%22>N</text></svg>" type="image/svg+xml">
 </head>
 <body>
 
@@ -85,8 +85,16 @@
                 LOVE LOVE BELLA,,DEAR BELLA
             </p>
             <div class="social-links">
-                <a href="https://x.com/Nyxvous" title="Twitter">X</a>
-                <a href="https://www.roblox.com/users/550402176/profile" title="Roblox">Roblox</a>
+                <a href="https://x.com/Nyxvous" title="Twitter">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.roblox.com/users/550402176/profile" title="Roblox">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0L1.714 3.429v17.142L12 24l10.286-3.429V3.429L12 0zM8.571 8.571l6.858 6.858-6.858-6.858zm6.858 6.858L8.57 8.572l6.858 6.857z"></path>
+                    </svg>
+                </a>
             </div>
         </div>
 
@@ -171,6 +179,34 @@
 <div id="art-modal" class="modal">
     <span class="close-btn">&times;</span>
     <img class="modal-content" id="modal-image">
+</div>
+
+<div id="music-player" class="music-player">
+    <div id="player-nav-bar" class="player-nav-bar">
+        <span>Music_Player.exe</span>
+    </div>
+    <div class="player-body">
+        <div id="track-info" class="track-info">Loading...</div>
+        <div class="progress-container">
+            <input type="range" id="seek-bar" class="seek-bar" value="0" step="1">
+        </div>
+        <div class="controls-container">
+            <button id="prev-btn" class="player-btn">
+                <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
+            </button>
+            <button id="play-pause-btn" class="player-btn play">
+                <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+            </button>
+            <button id="next-btn" class="player-btn">
+                <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
+            </button>
+        </div>
+        <div class="volume-container">
+            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>
+            <input type="range" id="volume-bar" class="volume-bar" min="0" max="1" step="0.01" value="0.5">
+        </div>
+    </div>
 </div>
 
 <script src="script.js" defer></script>

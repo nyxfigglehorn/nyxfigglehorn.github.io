@@ -44,7 +44,6 @@ body {
     box-sizing: border-box;
 }
 
-/* FANCY: Pause the animation when hovering over the sidebar */
 .sidebar:hover .stamp-container,
 .sidebar:hover .button-container {
     animation-play-state: paused;
@@ -55,142 +54,98 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    /* FANCY: Apply the infinite scroll animation */
-    animation: marquee 20s linear infinite;
+    animation: marquee 40s linear infinite;
 }
 
-/* FANCY: Define the scrolling animation */
 @keyframes marquee {
-    from {
-        transform: translateY(0%);
-    }
-    to {
-        /* This moves the content up by half its height, creating a seamless loop */
-        /* This requires the content inside to be duplicated in the HTML */
-        transform: translateY(-50%);
-    }
+    from { transform: translateY(0%); }
+    to { transform: translateY(-50%); }
 }
-
 
 .stamp {
-    max-width: 100%; /* Ensure image doesn't exceed sidebar width */
-    height: auto; /* Maintain aspect ratio */
-    /* border: 2px solid #00ff00; */ /* Removed this line */
+    max-width: 100%;
+    height: auto;
 }
 
 .sidebar-btn {
     width: 100%;
     padding: 10px;
     background-color: transparent;
-    border: none; /* Removed the border */
+    border: none;
     color: #00ff00;
     font-family: 'VT323', monospace;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
-    flex-shrink: 0; /* Prevent buttons from shrinking */
+    flex-shrink: 0;
 }
 .sidebar-btn:hover {
     background-color: #00ff00;
     color: #000;
 }
 
-
-/* New container for centering the card and gallery */
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Space between card and gallery */
+    gap: 40px;
     height: 95vh;
-    overflow-y: auto; /* Allow main content to scroll */
-    padding: 0 20px; /* Add padding to prevent content touching scrollbar */
+    overflow-y: auto;
+    padding: 0 20px;
 }
-/* Custom scrollbar for main content */
-.main-container::-webkit-scrollbar {
-    width: 8px;
-}
-.main-container::-webkit-scrollbar-track {
-    background: rgba(0, 20, 0, 0.5);
-}
-.main-container::-webkit-scrollbar-thumb {
-    background-color: #00ff00;
-    border-radius: 4px;
-}
+.main-container::-webkit-scrollbar { width: 8px; }
+.main-container::-webkit-scrollbar-track { background: rgba(0, 20, 0, 0.5); }
+.main-container::-webkit-scrollbar-thumb { background-color: #00ff00; border-radius: 4px; }
 
-/* --- Window Bar Styles --- */
 .window-bar {
     height: 25px;
-    background-color: rgba(0, 50, 0, 0.8); /* Darker green for the bar */
+    background-color: rgba(0, 50, 0, 0.8);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
     border-bottom: 2px solid #00ff00;
-    /* Position the bar at the top of its container */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
 }
 
-.window-title {
-    font-size: 1rem;
-    color: #00ff00;
-}
-
-.window-controls {
-    display: flex;
-    gap: 8px;
-}
-
-.control-btn {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 1px solid #00ff00;
-}
-
+.window-title { font-size: 1rem; color: #00ff00; }
+.window-controls { display: flex; gap: 8px; }
+.control-btn { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #00ff00; }
 .control-btn.close { background-color: rgba(255, 95, 86, 0.5); }
 .control-btn.minimize { background-color: rgba(255, 189, 46, 0.5); }
 .control-btn.maximize { background-color: rgba(39, 201, 63, 0.5); }
 
-
-.bio-card, .art-gallery { /* Combine shared styles */
+.bio-card, .art-gallery {
     background-color: rgba(0, 20, 0, 0.75);
     border: 2px solid #00ff00;
     padding: 30px;
-    padding-top: 55px; /* Increased top padding to make space for the window bar */
+    padding-top: 55px;
     width: 90%;
     max-width: 400px;
     text-align: center;
     backdrop-filter: blur(4px);
     box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
-    position: relative; /* Needed to contain the absolute positioned window bar */
-    flex-shrink: 0; /* Prevent boxes from shrinking */
+    position: relative;
+    flex-shrink: 0;
 }
 
-.art-gallery {
-    /* Entrance Animation */
-    animation: fadeIn 0.5s ease-out 0.5s forwards;
-    opacity: 0;
-}
+.art-gallery { animation: fadeIn 0.5s ease-out 0.5s forwards; opacity: 0; }
 
-
-/* Container for the banner image */
 .profile-pic-container {
     width: 100%;
     height: 150px;
     margin: 0 auto 20px auto;
     border: 2px solid #00ff00;
-    /* The background-image is now set inline in the HTML */
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Needed for positioning the pfp */
-    margin-bottom: 85px; /* Space for the overlapping pfp */
+    position: relative;
+    margin-bottom: 85px;
 }
 
 .profile-pic {
@@ -198,127 +153,122 @@ body {
     height: 150px;
     border-radius: 50%;
     border: 3px solid #00ff00;
-    /* The background-image is now set inline in the HTML */
     background-size: cover;
-    box-shadow: 0 0 15px #00ff00; /* Add a glow to lift it from the banner */
-    /* Position the PFP to overlap the banner */
+    box-shadow: 0 0 15px #00ff00;
     position: absolute;
-    bottom: -75px; /* Half of the pfp height to make it hang off the bottom */
+    bottom: -75px;
 }
 
+.name { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 0 10px #00ff00; }
+.bio { font-size: 1.2rem; line-height: 1.5; margin-bottom: 25px; }
+.social-links a { color: #00ff00; text-decoration: none; margin: 0 15px; transition: filter 0.3s; display: inline-block; }
+.social-links a:hover { filter: drop-shadow(0 0 5px #fff); }
+.social-icon { width: 28px; height: 28px; }
 
-.name {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px #00ff00;
-}
-
-.bio {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
-
-.social-links a {
-    color: #00ff00;
-    text-decoration: none;
-    font-size: 1.5rem;
-    margin: 0 15px;
-    transition: text-shadow 0.3s;
-}
-
-.social-links a:hover {
-    text-shadow: 0 0 15px #fff;
-}
-
-/* --- Art Gallery Styles --- */
-.gallery-title {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.gallery-grid {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
+.gallery-title { font-size: 2rem; margin-bottom: 15px; }
+.gallery-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 .gallery-item {
     width: 100px;
-    height: 100px; /* Changed to square */
+    height: 100px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
-    /* FANCY: Use border-image for a special gradient border */
     border: 4px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(to bottom right, #0f0, #050);
 }
+.gallery-item:hover { transform: scale(1.1); box-shadow: 0 0 15px #00ff00; }
 
-.gallery-item:hover {
-    transform: scale(1.1);
-    /* FANCY: Use box-shadow for a glow on hover */
-    box-shadow: 0 0 15px #00ff00;
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
+.modal-content { max-width: 90%; max-height: 90%; animation: zoomIn 0.3s ease; border: 6px solid; border-image-slice: 1; border-image-source: linear-gradient(to bottom right, #0f0, #050); }
+.close-btn { position: absolute; top: 20px; right: 35px; color: #00ff00; font-size: 40px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+.close-btn:hover { transform: scale(1.2); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes zoomIn { from { transform: scale(0.8); } to { transform: scale(1); } }
+
+/* --- Music Player Styles --- */
+.music-player {
+    position: fixed;
+    top: 40px; /* Changed from bottom */
+    right: 40px;
+    width: 300px;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    z-index: 999;
+    /* clip-path has been removed */
 }
 
-/* --- Modal Styles --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+.player-nav-bar {
+    height: 25px;
+    background: linear-gradient(180deg, #004d00, #002600);
+    color: #00ff00;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    cursor: move;
+    border-bottom: 1px solid #00ff00;
+}
+
+.player-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.track-info {
+    text-align: center;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.controls-container {
+    display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease;
+    gap: 20px;
 }
 
-.modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    animation: zoomIn 0.3s ease;
-    /* FANCY: Add the special border to the enlarged image */
-    border: 6px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to bottom right, #0f0, #050);
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 35px;
+.player-btn {
+    background: none;
+    border: 1px solid #00ff00;
     color: #00ff00;
-    font-size: 40px;
-    font-weight: bold;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: background-color 0.2s;
 }
+.player-btn:hover { background-color: rgba(0, 255, 0, 0.2); }
+.player-btn svg { width: 20px; height: 20px; fill: currentColor; }
+.player-btn .pause-icon { display: none; }
+.player-btn.playing .play-icon { display: none; }
+.player-btn.playing .pause-icon { display: block; }
 
-.close-btn:hover {
-    transform: scale(1.2);
+.progress-container, .volume-container { display: flex; align-items: center; gap: 10px; }
+.volume-container svg { width: 20px; height: 20px; fill: #00ff00; }
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #003300;
+    outline: none;
+    border: 1px solid #00ff00;
 }
-
-/* --- Keyframe Animations --- */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.8);
-    }
-    to {
-        transform: scale(1);
-    }
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #00ff00;
+    cursor: pointer;
+    box-shadow: 0 0 5px #00ff00;
 }
