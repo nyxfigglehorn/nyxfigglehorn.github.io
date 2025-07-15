@@ -33,8 +33,15 @@ const fragmentShaderSource = `#version 300 es
         // Center and correct aspect ratio
         vec2 uv = (gl_FragCoord.xy * 2.0 - iResolution.xy) / iResolution.y;
         
+        // --- Wavy Distortion ---
+        // Apply sine waves to the coordinates to create a warp effect
+        vec2 wavy_uv = uv;
+        wavy_uv.x += sin(uv.y * 5.0 + iTime * 0.5) * 0.1;
+        wavy_uv.y += cos(uv.x * 5.0 + iTime * 0.5) * 0.1;
+
         // --- Checkered Pattern ---
-        vec2 check_uv = uv * 15.0; // Scale the checkers
+        // Use the wavy coordinates for the checkerboard
+        vec2 check_uv = wavy_uv * 8.0; // Made checkers bigger
         vec2 i_uv = floor(check_uv);
         float check = mod(i_uv.x + i_uv.y, 2.0);
         vec3 finalColor = mix(COLOR_CHECK1, COLOR_CHECK2, check);
@@ -44,14 +51,10 @@ const fragmentShaderSource = `#version 300 es
         float scanLine = sin(scanLineY) * 0.5 + 0.5;
         finalColor *= mix(0.8, 1.2, scanLine); // Modulate brightness
 
-        // --- Vignette ---
-        float vignette = length(uv * 0.9);
-        finalColor *= 1.0 - pow(vignette, 4.0);
-
         // --- Chromatic Aberration (subtle) ---
         // This simulates the effect by slightly shifting color channels.
-        finalColor.r += 0.02 * (1.0 - vignette);
-        finalColor.b += 0.01 * (1.0 - vignette);
+        finalColor.r += 0.02;
+        finalColor.b += 0.01;
 
         fragColor = vec4(finalColor, 1.0);
     }
@@ -120,3 +123,26 @@ function render(time) {
 
 requestAnimationFrame(render);
 
+
+// --- Art Gallery Modal Logic ---
+const modal = document.getElementById('art-modal');
+const modalImg = document.getElementById('modal-image');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const closeModal = document.querySelector('.close-btn');
+
+galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+        modal.style.display = "flex";
+        modalImg.src = item.src;
+    });
+});
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+});
